@@ -69,14 +69,14 @@
 
 <script type="text/javascript">
 	
-	/* 아이디 중복 체크 */
+	/* 아이디 중복 체크 --------------------------------------------*/
 	$('#btnIdCheck').on('click', function(){
 		console.log('아이디 체크 버튼');
 		
 		//데이터 모으기
 		var id = $('#txtId').val();
 		console.log(id);
-		
+
 		$.ajax({
 			//-------보낼때
 			//요청할 컨트롤러 주소
@@ -98,13 +98,43 @@
 				}else{
 					$("#tdMsg").text("사용할 수 있는 아이디 입니다.");
 				}
-
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
 			}
 			
 		})
+	});
+	
+	/* 회원가입 중간 확인 --------------------------------------------*/
+	$('#btnArea').on('click', function(){
+		
+		console.log('회원가입 버튼 클릭');
+		
+		var id = $('#txtId').val();
+		var pw = $('#txtPassword').val();
+		var userName = $('#txtUserName').val();
+		var chkAgree = $('#chkAgree').val();
+		
+		if(id == ""){
+			alert('아이디를 입력해 주세요')
+			return false;
+		}
+		if(pw == ""){
+			alert('비밀번호를 입력해 주세요')
+			return false;
+		}
+		if(userName == ""){
+			alert('이름을 입력해 주세요')
+			return false;
+		}
+		if(chkAgree == ""){
+			alert('약관 동의서에 체크해 주세요')
+			return false;
+		}
+		
+		return true;
+		
 	});
 
 </script>
