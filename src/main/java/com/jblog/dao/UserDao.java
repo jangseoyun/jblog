@@ -27,4 +27,11 @@ public class UserDao {
 		System.out.println("Dao.user.idCheck 접근");
 		return sqlSession.selectOne("users.idCheck",id);
 	}
+	
+	// ----[로그인]--------------------------------------------------------
+		public UserVo getUser(UserVo userVo) {
+			
+			System.out.println("Dao.user.getUser 접근");
+			return sqlSession.selectOne("users.getUser",userVo);
+		}
 }

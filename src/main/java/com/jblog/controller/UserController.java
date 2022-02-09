@@ -1,5 +1,7 @@
 package com.jblog.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,8 +24,25 @@ public class UserController {
 	public String loginForm() {
 
 		System.out.println("Controller.user.loginForm 접속");
-
 		return "user/loginForm";
+
+	}
+	
+	// ----[로그인]--------------------------------------------------------
+	@RequestMapping("/login")
+	public String login(@ModelAttribute UserVo userVo,
+						HttpSession httpSession) {
+		
+		System.out.println("Controller.user.login 접속");
+		UserVo authUser = userService.getUser(userVo);
+		System.out.println(authUser);
+		//세션 저장
+		if(authUser != null) {
+			httpSession.setAttribute("authUser", authUser);
+			return "redirect:/";
+		}else {
+			return "redirect:/user/loginForm";
+		}
 
 	}
 
@@ -32,7 +51,6 @@ public class UserController {
 	public String joinForm() {
 
 		System.out.println("Controller.user.joinForm 접속");
-
 		return "user/joinForm";
 
 	}
@@ -60,6 +78,18 @@ public class UserController {
 		return count;
 	}
 	
+	// ----[로그아웃]--------------------------------------------------------
+	@RequestMapping("/logout")
+	public String logout(HttpSession httpSession) {
+		
+		System.out.println("Controller.user.logout 접속");
+		
+		//세션정보 삭제
+		httpSession.removeAttribute("authUser");
+		httpSession.invalidate();
+		
+		return "redirect:/";
+	}
 	
 
 }

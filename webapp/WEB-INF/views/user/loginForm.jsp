@@ -3,12 +3,14 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>JBlog</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
+
 <body>
 	<div id="center-content">
 		
@@ -25,11 +27,11 @@
 					</colgroup>
 		      		<tr>
 		      			<td><label for="textId">아이디</label></td>
-		      			<td><input id="textId" type="text" name="id"></td>
+		      			<td><input id="textId" type="text" name="id" value=""></td>
 		      		</tr>
 		      		<tr>
 		      			<td><label for="textPassword">패스워드</label> </td>
-		      			<td><input id="textPassword" type="password" name="password"></td>   
+		      			<td><input id="textPassword" type="password" name="password" value=""></td>   
 		      			   			
 		      		</tr> 
 		      		<tr>

@@ -26,5 +26,15 @@ public class UserService {
 		System.out.println("Service.user.idCheck 접근");
 		return userDao.idCheck(id);
 	}
+	
+	// ----[로그인]--------------------------------------------------------
+	public UserVo getUser(UserVo userVo) {
 
+		System.out.println("Service.user.login 접근");
+		UserVo getUser = userDao.getUser(userVo);
+		System.out.println(getUser);
+		
+		return getUser;
+		
+	}
 }
