@@ -128,10 +128,10 @@
 			alert('이름을 입력해 주세요')
 			return false;
 		}
-		if(chkAgree == ""){
+		/* if(chkAgree == ""){
 			alert('약관 동의서에 체크해 주세요')
 			return false;
-		}
+		}  */
 		
 		return true;
 		

@@ -32,7 +32,8 @@
 	<select id="getUser" parameterType="com.jblog.vo.UserVo" resultType="com.jblog.vo.UserVo">
 		<![CDATA[
 			select  userNo,
-	        		userName
+	        		userName,
+	        		id
 			from users
 			where id = #{id}
 			and password = #{password}

@@ -22,25 +22,26 @@
 				<div id="profile">
 					
 					<!-- 기본이미지 -->
-					<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
-					
 					<!-- 사용자업로드 이미지 -->
-					<%-- <img id="proImg" src=""> --%>
+					<c:choose>
+						<c:when test="${logoFilePath == null}">
+							<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
+						</c:when>
+						<c:otherwise>
+							<img id="proImg" src="${pageContext.request.contextPath}/${logoFilePath}">
+						</c:otherwise>
+					</c:choose>
 					
-					<div id="nick">정우성(hijava)님</div>
+					<div id="nick">${authUser.userName}(${authUser.id})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
 						<strong>카테고리</strong>
 					</div>
 					<ul id="cateList" class="text-left">
-						<li><a href="$}">카테고리5</a></li>
-						<li><a href="$}">카테고리4</a></li>
-						<li><a href="$}">카테고리3</a></li>
-						<li><a href="$}">카테고리2</a></li>
-						<li><a href="$}">카테고리1</a></li>
+						<!-- for문 -->
 						<li><a href="$}">미분류</a></li>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -49,9 +50,9 @@
 			<div id="post_area">
 				
 				<div id="postBox" class="clearfix">
-						<div id="postTitle" class="text-left"><strong>08.페이징</strong></div>
+						<div id="postTitle" class="text-left"><strong>등록된 글이 없습니다.</strong></div>
 						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
-						<div id="postNick">정우성(hijava)님</div>
+						<div id="postNick">${authUser.userName}(${authUser.id})님</div>
 				</div>
 				<!-- //postBox -->
 			
@@ -83,27 +84,12 @@
 							<col style="width: 20%;">
 						</colgroup>
 						
+							<!-- for문 -->
 						<tr>
-							<td class="text-left"><a href="">08.페이징</a></td>
+							<td class="text-left"><a href="">등록된 글이 없습니다.</a></td>
 							<td class="text-right">2020/07/23</td>
 						</tr>
-						<tr>
-							<td class="text-left"><a href="">07.첨부파일_MultipartResolver</a></td>
-							<td class="text-right">2020/07/23</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="">06.jquery_ajax</a></td>
-							<td class="text-right">2020/07/23</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="">05.javaScript</a></td>
-							<td class="text-right">2020/07/23</td>
-						</tr>
-						<tr>
-							<td class="text-left"><a href="">04.spring_어플리케이션_아키텍쳐</a></td>
-							<td class="text-right">2020/07/23</td>
-						</tr>
-						
+							<!-- for문 -->
 						
 					</table>
 				</div>
@@ -117,9 +103,7 @@
 		<!-- //content -->
 		<div class=></div>
 		<c:import url="/WEB-INF/views/includes/blog-footer.jsp"></c:import>
-		
-	
-	
+
 	</div>
 	<!-- //wrap -->
 </body>

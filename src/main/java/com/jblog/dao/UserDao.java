@@ -3,6 +3,7 @@ package com.jblog.dao;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.vo.UserVo;
 
@@ -29,9 +30,12 @@ public class UserDao {
 	}
 	
 	// ----[로그인]--------------------------------------------------------
-		public UserVo getUser(UserVo userVo) {
-			
-			System.out.println("Dao.user.getUser 접근");
-			return sqlSession.selectOne("users.getUser",userVo);
-		}
+	public UserVo getUser(UserVo userVo) {
+		
+		System.out.println("Dao.user.getUser 접근");
+		return sqlSession.selectOne("users.getUser",userVo);
+	}
+	
+	
+		
 }

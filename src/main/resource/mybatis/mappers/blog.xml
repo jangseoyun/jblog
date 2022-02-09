@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="blog">
+
+	<!-- 개인정보 수정(로고,배너) -->
+	<update id="basicUpdate" parameterType="map">
+		<![CDATA[
+			update blog
+			set blogTitle = #{blogTitle},
+		   		logoFile = #{filePath}
+			where id = #{id}
+		]]>
+	</update>
+	
+	<!-- 카테고리 메인 리스트 출력 -->
+	<select id="cateSelect" resultType="com.jblog.vo.CategoryVo">
+		<![CDATA[
+			select  cateNo,
+			        id,
+			        cateName,
+			        description,
+			        regDate
+			from category
+			order by regDate desc
+		]]>
+	</select>
+
+</mapper>
