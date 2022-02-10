@@ -69,12 +69,7 @@ public class BlogService {
 		return filePath;
 	}
 	
-	// ----[카테고리 메인 리스트]--------------------------------------------------------
-	public List<CategoryVo> cateSelect() {
-		
-		System.out.println("Service.blog.cateList");
-		return blogDao.cateSelect();
-	}
+	
 	
 	
 	
