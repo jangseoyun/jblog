@@ -3,7 +3,7 @@
 
 		<div id="header" class="clearfix">
 		
-			<h1><a href="${pageContext.request.contextPath}/${authUser.id}">${getBlogVo.id}의 블로그입니다.</a></h1>
+			<h1><a href="${pageContext.request.contextPath}/${authUser.id}">${getBlogVo.blogTitle}의 블로그입니다.</a></h1>
 			<ul class="clearfix">
 
 		 		<c:choose>
