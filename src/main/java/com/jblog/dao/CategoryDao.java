@@ -18,7 +18,7 @@ public class CategoryDao {
 		public List<CategoryVo> cateSelect() {
 			
 			System.out.println("Dao.user.cateSelect 접근");
-			List<CategoryVo> cateList = sqlSession.selectList("blog.cateSelect");
+			List<CategoryVo> cateList = sqlSession.selectList("category.cateSelect");
 			System.out.println(cateList);
 			
 			return cateList;
