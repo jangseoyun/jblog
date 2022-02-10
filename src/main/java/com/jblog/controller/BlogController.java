@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.service.BlogService;
+import com.jblog.vo.BlogVo;
 import com.jblog.vo.CategoryVo;
 
 @Controller
@@ -23,11 +25,16 @@ public class BlogController {
 	@Autowired
 	private BlogService blogService;
 
+
 	// ----[내블로그로 이동]--------------------------------------------------------
 	@RequestMapping("")
-	public String getBlog(@PathVariable(value="id") String id) {
+	public String getBlog(@PathVariable(value="id") String id,
+							Model model) {
 
 		System.out.println("Controller.blog.getBlog 접근");
+		BlogVo getBlogVo = blogService.getBlogVo(id);
+		model.addAttribute("getBlogVo",getBlogVo);
+		
 		return "blog/blog-main";
 	}
 	

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.dao.BlogDao;
+import com.jblog.vo.BlogVo;
 import com.jblog.vo.CategoryVo;
 
 @Service
@@ -23,6 +24,13 @@ public class BlogService {
 	private BlogDao blogDao;
 	
 	String saveDir = "c:\\javaStudy\\jblog-file";
+	
+	// 블로그 타이틀,로고
+	public BlogVo getBlogVo(String id) {
+
+		return blogDao.getBlogVo(id);
+		
+	}
 	
 	// ----[내블로그 관리]--------------------------------------------------------
 	public String basicUpdate(String blogTitle, MultipartFile file, String id) {
