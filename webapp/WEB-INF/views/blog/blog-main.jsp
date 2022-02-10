@@ -32,7 +32,7 @@
 						</c:otherwise>
 					</c:choose>
 					
-					<div id="nick">${authUser.userName}(${getBlogVo.blogTitle})님</div>
+					<div id="nick">${authUser.userName}(${getBlogVo.id})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
@@ -52,7 +52,7 @@
 				<div id="postBox" class="clearfix">
 						<div id="postTitle" class="text-left"><strong>등록된 글이 없습니다.</strong></div>
 						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
-						<div id="postNick">${authUser.userName}(${getBlogVo.blogTitle})님</div>
+						<div id="postNick">${authUser.userName}(${getBlogVo.id})님</div>
 				</div>
 				<!-- //postBox -->
 			
