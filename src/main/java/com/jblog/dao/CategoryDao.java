@@ -15,13 +15,21 @@ public class CategoryDao {
 	private SqlSession sqlSession;
 	
 	// ----[카테고리 메인 리스트]--------------------------------------------------------
-		public List<CategoryVo> cateSelect() {
-			
-			System.out.println("Dao.user.cateSelect 접근");
-			List<CategoryVo> cateList = sqlSession.selectList("category.cateSelect");
-			System.out.println(cateList);
-			
-			return cateList;
-		}
+	public List<CategoryVo> cateSelect() {
+		
+		System.out.println("Dao.user.cateSelect 접근");
+		List<CategoryVo> cateList = sqlSession.selectList("category.cateSelect");
+		System.out.println(cateList);
+		
+		return cateList;
+	}
+		
+	public String cateInsert(CategoryVo categoryVo) {
+		
+		System.out.println("Dao.user.cateSelect 접근");
+		sqlSession.insert("category.cateInsert",categoryVo);
+		
+		return "";
+	}	
 
 }

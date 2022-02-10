@@ -57,11 +57,11 @@
 					</colgroup>
 		      		<tr>
 		      			<td class="t">카테고리명</td>
-		      			<td><input type="text" name="name" value=""></td>
+		      			<td><input id="cate-name" type="text" name="name" value=""></td>
 		      		</tr>
 		      		<tr>
 		      			<td class="t">설명</td>
-		      			<td><input type="text" name="desc" value=""></td>
+		      			<td><input id="cate-desc" type="text" name="desc" value=""></td>
 		      		</tr>
 		      	</table> 
 			
@@ -91,7 +91,7 @@
 		console.log("리스트요청");
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/blog/admin/cateList",
+			url : "${pageContext.request.contextPath}/RequestMapping/admin/cateList",
 			type : "post",
 			
 			dataType : "json",
@@ -137,15 +137,16 @@
 		console.log('카테고리 추가 클릭');
 		
 		//데이터 모으기
-		var cateVoInsert = {
-				
+		var cateVo = {
+			catename : $('#cate-name').val(), //카테고리명
+			description : $('#cate-desc').val() //카테고리 설명
 		};
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath }/api/gb/add",
+			url : "${pageContext.request.contextPath}/RequestMapping/admin/cateAdd",
 			type : "post",
 			contentType : "application/json",
-			data : {name: "홍길동"},
+			data : cateVo,
 			
 			dataType : "json",
 			success : function(result){
@@ -156,7 +157,9 @@
 			}
 		});
 		
-	})
+	});
+	
+	
 
 
 </script>

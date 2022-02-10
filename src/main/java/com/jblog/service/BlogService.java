@@ -66,7 +66,7 @@ public class BlogService {
 			e.printStackTrace();
 		}
 
-		return filePath;
+		return saveName;
 	}
 	
 	

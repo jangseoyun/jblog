@@ -20,7 +20,6 @@ public class BlogController {
 	@Autowired
 	private BlogService blogService;
 
-
 	// ----[내블로그로 이동]--------------------------------------------------------
 	@RequestMapping("")
 	public String getBlog(@PathVariable(value="id") String id,
@@ -29,6 +28,7 @@ public class BlogController {
 		System.out.println("Controller.blog.getBlog 접근");
 		BlogVo getBlogVo = blogService.getBlogVo(id);
 		model.addAttribute("getBlogVo",getBlogVo);
+		System.out.println("getblogVo:" + getBlogVo);
 		
 		return "blog/blog-main";
 	}

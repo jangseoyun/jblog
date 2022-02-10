@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -30,11 +31,25 @@ public class CategoryController {
 	@ResponseBody
 	public List<CategoryVo> cateList(){
 		
-		System.out.println("Controller.blog.category 접근");
+		System.out.println("Controller.blog.cateList 접근");
 		List<CategoryVo> cateList = categoryService.cateSelect();
 		System.out.println(cateList);
 
 		return cateList;
 	}
-
+	
+	// ----[카테고리 등록]--------------------------------------------------------
+	@RequestMapping("admin/cateAdd")
+	@ResponseBody
+	public String cateAdd(@ModelAttribute CategoryVo categoryVo) {
+		
+		System.out.println("Controller.blog.cateAdd 접근");
+		CategoryVo cateVo = categoryService.cateInsert(categoryVo);
+		
+		return cateVo;
+	}
+	
+	
+	
+	
 }

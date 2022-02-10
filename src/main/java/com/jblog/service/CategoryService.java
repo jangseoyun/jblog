@@ -20,5 +20,12 @@ public class CategoryService {
 		System.out.println("Service.blog.cateList");
 		return categoryDao.cateSelect();
 	}
+	
+	// ----[카테고리 등록]--------------------------------------------------------
+	public String cateInsert(CategoryVo categoryVo) {
+		
+		System.out.println("Service.blog.cateInsert");
+		return categoryDao.cateInsert(categoryVo);
+	}
 
 }

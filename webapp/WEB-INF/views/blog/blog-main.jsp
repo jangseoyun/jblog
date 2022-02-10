@@ -24,11 +24,11 @@
 					<!-- 기본이미지 -->
 					<!-- 사용자업로드 이미지 -->
 					<c:choose>
-						<c:when test="${logoFilePath == null}">
+						<c:when test="${getBlogVo.logoFile == null}">
 							<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
 						</c:when>
 						<c:otherwise>
-							<img id="proImg" src="${pageContext.request.contextPath}/${logoFilePath}">
+							<img id="proImg" src="${pageContext.request.contextPath}/${authUser.userName}/${logoFilePath}">
 						</c:otherwise>
 					</c:choose>
 					

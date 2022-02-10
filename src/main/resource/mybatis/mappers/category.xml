@@ -16,5 +16,17 @@
 			order by regDate desc
 		]]>
 	</select>
+	
+	<!-- 카테고리 등록 -->
+	<insert id="cateInsert" parameterType="com.jblog.vo.CategoryVo">
+		<![CDATA[
+			insert into category
+			values(seq_category_no.nextval,
+									'java',
+									'카테고리명입니다', 
+									'카테고리설명입니다', 
+									sysdate)
+		]]>
+	</insert>
 
 </mapper>
