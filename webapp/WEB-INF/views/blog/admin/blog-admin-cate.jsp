@@ -99,7 +99,7 @@
 				/*성공 코드 */
 				
 				for(var i = 0; i<cateList.length; i++){
-					render(cateList[i],postCount(),'down');
+					render(cateList[i],'down');
 				}
 			
 			},
@@ -114,13 +114,13 @@
 
 	//----------------------------------------------------
 	/* 1-1) 리스트 화면 html */
-	function render(cateVo,postCount,updown){//cateList
+	function render(cateVo,updown){//cateList
 		
 		var str = '';
 		str += ' <tr id="t"> ';
 		str += ' 		<td>'+cateVo.cateNo+'</td> ';
 		str += ' 		<td>'+cateVo.cateName+'</td> ';
-		str += ' 		<td>'+postCount+'</td> ';
+		str += ' 		<td>'+0+'</td> ';
 		str += ' 		<td>'+cateVo.description+'</td> ';
 		str += ' 		<td class="text-center"> ';
 		str += ' 			<img class="btnCateDel" data-cateno="'+cateVo.cateNo +'"src="${pageContext.request.contextPath}/assets/images/delete.jpg"> ';
@@ -168,12 +168,12 @@
 			/*성공시 처리해야될 코드 작성*/
 				console.log(cateVo)
 				
-				//포스트 카운트 가져오기
+				/* //포스트 카운트 가져오기
 				var postCount = postCount(cateVo.cateNo);
-				console.log('그리기전:'+postCount);
+				console.log('그리기전:'+postCount); */
 				
 				//그리기
-				render(cateVo,postCount,'up');
+				render(cateVo,'up');
 			
 				$('#cate-name').val("");
 				$('#cate-desc').val("");
