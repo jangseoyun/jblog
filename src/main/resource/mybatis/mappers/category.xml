@@ -12,21 +12,49 @@
 			        cateName,
 			        description,
 			        regDate
-			from category
+			from category 
 			order by regDate desc
 		]]>
 	</select>
 	
 	<!-- 카테고리 등록 -->
 	<insert id="cateInsert" parameterType="com.jblog.vo.CategoryVo">
+		<selectKey keyProperty="cateNo" resultType="int" order="BEFORE">
+			select seq_category_no.nextval from dual
+		</selectKey>
 		<![CDATA[
 			insert into category
-			values(seq_category_no.nextval,
-									'java',
-									'카테고리명입니다', 
-									'카테고리설명입니다', 
-									sysdate)
+			values( #{cateNo},
+					#{id},
+					#{cateName}, 
+					#{description}, 
+					sysdate
+			)
 		]]>
 	</insert>
+	
+	<!-- 카테고리 vo 가져오기 -->
+	<select id="cateVo" parameterType="int" resultType="com.jblog.vo.CategoryVo">
+		<![CDATA[
+			select  cateNo,
+			        id,
+			        cateName,
+			        description,
+			        regDate
+			from category
+			where cateNo = #{cateNo}
+		]]>
+	</select>
+	
+	<!-- 카테고리 삭제 -->
+	<delete id="cateDelete" parameterType="int">
+		<![CDATA[
+			delete from category
+			where cateNo = #{cateNo}
+		]]>
+	</delete>
+
+	
+	
 
 </mapper>

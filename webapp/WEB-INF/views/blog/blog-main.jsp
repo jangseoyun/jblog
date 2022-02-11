@@ -23,16 +23,16 @@
 					
 					<!-- 기본이미지 -->
 					<!-- 사용자업로드 이미지 -->
-					<c:choose>
-						<c:when test="${getBlogVo.logoFile == null}">
+					<c:choose> 
+						<c:when test="${empty map.BlogMap.logoFile}">
 							<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
 						</c:when>
 						<c:otherwise>
-							<img id="proImg" src="${pageContext.request.contextPath}/${authUser.userName}/${logoFilePath}">
+							<img id="proImg" src="${pageContext.request.contextPath}/${saveName}">
 						</c:otherwise>
-					</c:choose>
+					</c:choose> 
 					
-					<div id="nick">${authUser.userName}(${getBlogVo.id})님</div>
+					<div id="nick">${authUser.userName}(${blogMap.getBlogVo.id})님</div>
 				</div>
 				<div id="cate">
 					<div class="text-left">
@@ -52,7 +52,7 @@
 				<div id="postBox" class="clearfix">
 						<div id="postTitle" class="text-left"><strong>등록된 글이 없습니다.</strong></div>
 						<div id="postDate" class="text-left"><strong>2020/07/23</strong></div>
-						<div id="postNick">${authUser.userName}(${getBlogVo.id})님</div>
+						<div id="postNick">${authUser.userName}(${blogMap.getBlogVo.id})님</div>
 				</div>
 				<!-- //postBox -->
 			

@@ -10,7 +10,6 @@ public class CategoryVo {
 	private String regDate;
 
 	
-	
 	//생성자
 	public CategoryVo() {}
 	

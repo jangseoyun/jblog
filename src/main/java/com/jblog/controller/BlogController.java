@@ -1,5 +1,7 @@
 package com.jblog.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.service.BlogService;
-import com.jblog.vo.BlogVo;
+import com.jblog.service.PostService;
 
 @Controller
 @RequestMapping(value="/{id}")
@@ -19,6 +21,8 @@ public class BlogController {
 	
 	@Autowired
 	private BlogService blogService;
+	@Autowired
+	private PostService postService;
 
 	// ----[내블로그로 이동]--------------------------------------------------------
 	@RequestMapping("")
@@ -26,9 +30,9 @@ public class BlogController {
 							Model model) {
 
 		System.out.println("Controller.blog.getBlog 접근");
-		BlogVo getBlogVo = blogService.getBlogVo(id);
-		model.addAttribute("getBlogVo",getBlogVo);
-		System.out.println("getblogVo:" + getBlogVo);
+		Map<String,Object> blogMap = blogService.getBlogVo(id);
+		model.addAttribute("blogMap",blogMap);
+		System.out.println("BlogMap:" + blogMap);
 		
 		return "blog/blog-main";
 	}
@@ -53,6 +57,7 @@ public class BlogController {
 		return "redirect:/{id}";
 	}
 	
+	//========================================================================
 	// ----[내블로그 관리]--------------------------------------------------------
 	@RequestMapping("/admin/basic")
 	public String adminBasic() {
@@ -77,6 +82,16 @@ public class BlogController {
 		return "redirect:/{id}";
 	}
 	
+	//====================================================================
+	// ----[글작성]--------------------------------------------------------
+	@RequestMapping("/admin/writeForm")
+	public String writeForm() {
+		
+		System.out.println("Controller.blog.writeForm 접근");
+		//post 가져오기
+		
+		return "blog/admin/blog-admin-write";
+	}
 	
 	
 	

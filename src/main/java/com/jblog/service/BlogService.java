@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.dao.BlogDao;
 import com.jblog.vo.BlogVo;
-import com.jblog.vo.CategoryVo;
 
 @Service
 public class BlogService {
@@ -26,10 +25,12 @@ public class BlogService {
 	String saveDir = "c:\\javaStudy\\jblog-file";
 	
 	// 블로그 타이틀,로고
-	public BlogVo getBlogVo(String id) {
+	public Map<String,Object> getBlogVo(String id) {
 
-		return blogDao.getBlogVo(id);
-		
+		Map<String,Object> blogMap  = new HashMap<String, Object>();
+		blogMap.put("getBlogVo", blogDao.getBlogVo(id));
+
+		return blogMap ;
 	}
 	
 	// ----[내블로그 관리]--------------------------------------------------------
