@@ -35,8 +35,8 @@
 		      			   			
 		      		</tr> 
 		      		<tr>
-		      			<td colspan="2" id="tdMsg" colspan="2">
-		      				<span>아이디 또는 비번을 확인해 주세요.</span>
+		      			<td id="loginCheck" colspan="2" id="tdMsg" colspan="2">
+		      				
 		      			</td>
 		      		</tr> 
 		      	</table>
@@ -54,5 +54,31 @@
 	</div>
 	
 </body>
+
+<script type="text/javascript">
+	
+	$('[class="btn"]').on('click', function(){
+		
+		console.log('로그인 클릭');
+		
+		var id = $('#textId').val();
+		var pw = $('#textPassword').val();
+		
+		if(id==""){
+			$('#loginCheck').html('<span>아이디를 확인해 주세요.</span>');
+			return false;
+		}
+		
+		if(pw==""){
+			$('#loginCheck').html('<span>비밀번호를 확인해 주세요.</span>');
+			return false;
+		}
+		return true;
+		
+	})
+	
+
+
+</script>
 
 </html>

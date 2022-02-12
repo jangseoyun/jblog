@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jblog.vo.PostVo;
+
 @Repository
 public class PostDao {
 	
@@ -19,5 +21,14 @@ public class PostDao {
 		
 		return count;
 	}
+	
+	public int postInsert(PostVo postVo) {
+		
+		System.out.println("Dao.post.postInsert 접근");
+		int count = sqlSession.insert("post.postInsert",postVo);
+		
+		return count;
+	}
+	
 
 }

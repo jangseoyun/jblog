@@ -18,14 +18,14 @@
 
 		<div id="content">
 			<ul id="admin-menu" class="clearfix">
-				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/admin/basic">기본설정</a></li>
+				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">기본설정</a></li>
 				<li class="tabbtn"><a href="${pageContext.request.contextPath}/admin/category">카테고리</a></li>
 				<li class="tabbtn"><a href="${pageContext.request.contextPath}/admin/writeForm">글작성</a></li>
 			</ul>
 			<!-- //admin-menu -->
 			
 			<div id="admin-content">
-				<form action="/admin/writeForm" method="get">
+				<form action="write" method="get">
 			      	<table id="admin-write">
 			      		<colgroup>
 							<col style="width: 100px;">
@@ -35,16 +35,10 @@
 			      		<tr>
 			      			<td class="t">포스트 제목</td>
 			      			<td >
-			      				<input type="text" name="postTitle" value="">
+			      				<input id="postTitle" type="text" name="postTitle" value="">
 				      		</td>
 				      		<td>
 				      			<select name="cateNo">
-				      				<!-- 카테고리 리스트 영역 -->
-				      				<option value="">스프링MVC</option>
-				      				<option value="">서블링_JSP</option>
-				      				<option value="">오라클</option>
-				      				<option value="">자바프로그래밍</option>
-				      				<option value="">미분류</option>
 				      				<!-- 카테고리 리스트 영역 -->
 				      			</select>
 				      		</td>
@@ -52,7 +46,7 @@
 			      		<tr>
 			      			<td>내용</td>
 			      			<td colspan="2">
-			      				<textarea name="postContent"></textarea>
+			      				<textarea id="postContent" name="postContent"></textarea>
 			      			</td>
 			      		</tr>
 			      	</table>
@@ -74,7 +68,39 @@
 </body>
 
 <script type="text/javascript">
+	
+	/* 로딩시 카테고리 불러오기 */
+	$(document).ready(function(){
+		
+		console.log('로딩완료')
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/admin/cateList",
+			type : "post",
+			
+			dataType : "json",
+			success : function(cateVo){
+				/*성공시 처리해야될 코드 작성*/
+				console.log(cateVo)
+				
+				for(var i = 0; i<cateVo.length; i++){
+					render(cateVo[i]);
+				}
+			
+			},
+			error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+			}
+		});
+		
+		/* 그리기 */
+		function render(cateVo){
 
+			$('[name="cateNo"]').append(' <option class="cateList" value="'+cateVo.cateNo+'">'+cateVo.cateName+'</option> ) ');
+		
+		}
+		
+	})
 
 </script>
 

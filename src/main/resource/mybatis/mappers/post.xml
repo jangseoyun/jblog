@@ -4,12 +4,12 @@
 
 <mapper namespace="post">
 	
-	<!-- 카테고리 삭제 -->
-	<!-- <delete id="cateDelete" parameterType="int">
+	<!-- 샘플 -->
+	<!-- <select id="" parameterType="" resultType="">
 		<![CDATA[
-			
+
 		]]>
-	</delete> -->
+	</select> -->
 	
 	<select id="postCount" parameterType="int" resultType="int">
 		<![CDATA[
@@ -18,6 +18,19 @@
 			where cateNo = #{cateNo}	
 		]]>
 	</select>
+	
+	<!-- 포스트 글 등록 -->
+	<insert id="postInsert" parameterType="com.jblog.vo.PostVo">
+		<![CDATA[
+			insert into post
+			values(seq_post_no.nextval,
+	        			#{cateNo},
+	        			#{postTitle},
+	        			#{postContent},
+	        			sysdate
+			)
+		]]>
+	</insert>
 
 
 

@@ -23,7 +23,6 @@ public class CategoryDao {
 		
 		//포스트 카운트
 		
-		
 		return cateList;
 	}
 	

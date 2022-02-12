@@ -81,17 +81,8 @@ public class BlogController {
 		 
 		return "redirect:/{id}";
 	}
+
 	
-	//====================================================================
-	// ----[글작성]--------------------------------------------------------
-	@RequestMapping("/admin/writeForm")
-	public String writeForm() {
-		
-		System.out.println("Controller.blog.writeForm 접근");
-		//post 가져오기
-		
-		return "blog/admin/blog-admin-write";
-	}
 	
 	
 	
