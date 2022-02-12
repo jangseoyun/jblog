@@ -22,12 +22,11 @@ public class PostDao {
 		return count;
 	}
 	
+	// ----[포스트 등록]--------------------------------------------------------
 	public int postInsert(PostVo postVo) {
 		
 		System.out.println("Dao.post.postInsert 접근");
-		int count = sqlSession.insert("post.postInsert",postVo);
-		
-		return count;
+		return sqlSession.insert("post.postInsert",postVo);
 	}
 	
 

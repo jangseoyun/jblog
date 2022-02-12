@@ -20,8 +20,6 @@ public class PostController {
 	public String writeForm() {
 		
 		System.out.println("Controller.post.writeForm 접근");
-		//cateList 가져오기
-
 		return "blog/admin/blog-admin-write";
 	}
 	
@@ -31,7 +29,7 @@ public class PostController {
 		
 		System.out.println("Controller.post.write 접근");
 		int count = postService.postAdd(postVo);
-		System.out.println("컨트롤러:"+count);
+		System.out.println("성공여부:"+count);
 		
 		return "redirect:/admin/writeForm";
 		
