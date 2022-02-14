@@ -13,14 +13,14 @@ import com.jblog.service.CategoryService;
 import com.jblog.vo.CategoryVo;
 
 @Controller
-@RequestMapping(value="/admin")
+@RequestMapping(value="/{id}")
 public class CategoryController {
 	
 	@Autowired
 	private CategoryService categoryService;
 	
 	// ----[카테고리 메인 리스트]--------------------------------------------------------
-	@RequestMapping("/category")
+	@RequestMapping("/admin/category")
 	public String categoryMain() {
 		
 		System.out.println("Controller.cate.category 접근");
@@ -28,7 +28,7 @@ public class CategoryController {
 	}
 	
 	// ----[카테고리 리스트 요청]--------------------------------------------------------
-	@RequestMapping("/cateList")
+	@RequestMapping("/admin/cateList")
 	@ResponseBody
 	public List<CategoryVo> cateList(){
 		//cateNo 받기 + 포스트 수 가져오기 + 리스트 뿌리기
@@ -40,7 +40,7 @@ public class CategoryController {
 	}
 	
 	// ----[카테고리 등록+리턴]--------------------------------------------------------
-	@RequestMapping("/cateAdd")
+	@RequestMapping("/admin/cateAdd")
 	@ResponseBody
 	public CategoryVo cateAdd(@ModelAttribute CategoryVo categoryVo) {
 		

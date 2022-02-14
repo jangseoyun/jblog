@@ -18,9 +18,9 @@
 
 		<div id="content">
 			<ul id="admin-menu" class="clearfix">
-				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">기본설정</a></li>
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/admin/category">카테고리</a></li>
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/admin/writeForm">글작성</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">기본설정</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/category">카테고리</a></li>
+				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/writeForm">글작성</a></li>
 			</ul>
 			<!-- //admin-menu -->
 			
@@ -38,7 +38,7 @@
 			      				<input id="postTitle" type="text" name="postTitle" value="">
 				      		</td>
 				      		<td>
-				      			<select name="cateNo">
+				      			<select name="cateNo" data-id="${authUser.id}">
 				      				<!-- 카테고리 리스트 영역 -->
 				      			</select>
 				      		</td>
@@ -68,14 +68,17 @@
 </body>
 
 <script type="text/javascript">
-	
+
+	var id = $('[name="cateNo"]').data('id');
+	var url = "${pageContext.request.contextPath }/"+id+"/";
+	//=====================================================================
 	/* 로딩시 카테고리 불러오기 */
 	$(document).ready(function(){
 		
 		console.log('로딩완료')
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath }/admin/cateList",
+			url : url+"admin/cateList",
 			type : "post",
 			
 			dataType : "json",

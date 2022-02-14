@@ -9,7 +9,7 @@
 		<![CDATA[
 			update blog
 			set blogTitle = #{blogTitle},
-		   		logoFile = #{filePath}
+		   		logoFile = #{saveName}
 			where id = #{id}
 		]]>
 	</update>

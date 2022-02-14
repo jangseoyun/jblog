@@ -20,17 +20,10 @@
 		<div id="content" class="clearfix">
 			<div id="profilecate_area">
 				<div id="profile">
-					
 					<!-- 기본이미지 -->
+					<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
 					<!-- 사용자업로드 이미지 -->
-					<c:choose> 
-						<c:when test="${empty map.BlogMap.logoFile}">
-							<img id="proImg" src="${pageContext.request.contextPath}/assets/images/spring-logo.jpg">
-						</c:when>
-						<c:otherwise>
-							<img id="proImg" src="${pageContext.request.contextPath}/${saveName}">
-						</c:otherwise>
-					</c:choose> 
+					<img id="proImg" src="${pageContext.request.contextPath}/${authUser.id}/${saveName}">
 					
 					<div id="nick">${authUser.userName}(${blogMap.getBlogVo.id})님</div>
 				</div>

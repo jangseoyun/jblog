@@ -9,14 +9,14 @@ import com.jblog.service.PostService;
 import com.jblog.vo.PostVo;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/{id}")
 public class PostController {
 	
 	@Autowired
 	private PostService postService;
 	
 	// ----[포스트 폼]--------------------------------------------------------
-	@RequestMapping("/writeForm")
+	@RequestMapping("/admin/writeForm")
 	public String writeForm() {
 		
 		System.out.println("Controller.post.writeForm 접근");
@@ -24,14 +24,14 @@ public class PostController {
 	}
 	
 	// ----[포스트 등록]--------------------------------------------------------
-	@RequestMapping("/write")
+	@RequestMapping("/admin/write")
 	public String write(@ModelAttribute PostVo postVo) {
 		
 		System.out.println("Controller.post.write 접근");
 		int count = postService.postAdd(postVo);
 		System.out.println("성공여부:"+count);
 		
-		return "redirect:/admin/writeForm";
+		return "redirect:/{id}/admin/writeForm";
 		
 	}
 	

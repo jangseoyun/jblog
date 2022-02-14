@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.service.BlogService;
-import com.jblog.service.PostService;
 
 @Controller
 @RequestMapping(value="/{id}")
@@ -21,10 +20,8 @@ public class BlogController {
 	
 	@Autowired
 	private BlogService blogService;
-	@Autowired
-	private PostService postService;
 
-	// ----[내블로그로 이동]--------------------------------------------------------
+	// ----[내블로그로 이동(블로그 타이틀,로고)]--------------------------------------------------------
 	@RequestMapping("")
 	public String getBlog(@PathVariable(value="id") String id,
 							Model model) {
@@ -38,7 +35,7 @@ public class BlogController {
 	}
 	
 	// ----[블로그 로그인]--------------------------------------------------------
-	@RequestMapping("blogLogin")
+	@RequestMapping("/blogLogin")
 	public String blogLogin() {
 
 		System.out.println("Controller.blog.blogLogin 접근");

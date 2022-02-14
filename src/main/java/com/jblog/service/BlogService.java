@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jblog.dao.BlogDao;
-import com.jblog.vo.BlogVo;
 
 @Service
 public class BlogService {
@@ -24,7 +22,7 @@ public class BlogService {
 	
 	String saveDir = "c:\\javaStudy\\jblog-file";
 	
-	// 블로그 타이틀,로고
+	// ----[블로그 기본 정보(타이틀,로고)]--------------------------------------------------------
 	public Map<String,Object> getBlogVo(String id) {
 
 		Map<String,Object> blogMap  = new HashMap<String, Object>();
@@ -50,7 +48,7 @@ public class BlogService {
 		
 		Map<String, String> basicMap = new HashMap<String, String>();
 		basicMap.put("blogTitle",blogTitle);
-		basicMap.put("filePath",filePath);
+		basicMap.put("saveName",saveName);
 		basicMap.put("id", id);
 		
 		//5) DB저장

@@ -14,7 +14,7 @@ public class BlogDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	//블로그 타이틀,로고
+	// ----[블로그 기본 정보(타이틀,로고)]--------------------------------------------------------
 	public BlogVo getBlogVo(String id) {
 		BlogVo getBlogVo = sqlSession.selectOne("blog.getBlogVo",id);
 		System.out.println(getBlogVo);

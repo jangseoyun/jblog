@@ -20,8 +20,8 @@
 		<div id="content">
 			<ul id="admin-menu" class="clearfix">
 				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">기본설정</a></li>
-				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/admin/category">카테고리</a></li>
-				<li class="tabbtn"><a href="${pageContext.request.contextPath}/admin/writeForm">글작성</a></li>
+				<li class="tabbtn selected"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/category">카테고리</a></li>
+				<li class="tabbtn"><a href="${pageContext.request.contextPath}/${authUser.id}/admin/writeForm">글작성</a></li>
 			</ul>
 			<!-- //admin-menu -->
 			
@@ -85,13 +85,16 @@
 
 <script type="text/javascript">
 
+	var id = $('#btnAddCate').data('id');
+	var url = "${pageContext.request.contextPath}/"+id+"/"
+	//=================================================================
 	/*1) 카테고리 리스트 가져오기 */
 	$(document).ready(function(){
 
 		console.log("리스트요청");
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/admin/cateList",
+			url : url+"admin/cateList",
 			type : "post",
 			
 			dataType : "json",
@@ -158,7 +161,7 @@
 		console.log(cateVo);
 		
 		$.ajax({
-			url : "${pageContext.request.contextPath}/admin/cateAdd",
+			url : url+"admin/cateAdd",
 			type : "post",
 			//contentType : "application/json",
 			data : cateVo,
@@ -194,7 +197,7 @@
 		console.log("포스트카운트"+cateNo);
 
 		$.ajax({
-			url : "${pageContext.request.contextPath}/admin/postCount",
+			url : url+"admin/postCount",
 			type : "post",
 			//contentType : "application/json",
 			data : {cateNo : cateNo},
